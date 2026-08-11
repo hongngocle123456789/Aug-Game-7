@@ -275,7 +275,7 @@
             text-transform: uppercase;
             margin-bottom: 4px;
             color: #27ae60;
-            text-shadow: 0 4px 0 #ffffff, 0 8px 16px rgba(0, 0, 0, 0.15);
+            text-shadow: 0 4px 0 #ffffff, 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         /* --- BUTTONS --- */
@@ -307,37 +307,38 @@
             box-shadow: 0 2px 0 #d68910;
         }
 
-        /* --- OPENING SCENE STAGING --- */
+        /* --- OPENING SCENE STAGING WITH HIGH-CONTRAST CANVAS CARD --- */
         .intro-stage {
             width: 90%;
             max-width: 880px;
             height: 280px;
-            background: rgba(255, 255, 255, 0.25); 
-            border: 4px solid #ffffff;
+            background: rgba(15, 32, 39, 0.75); /* Dark vibrant backdrop for contrast */
+            border: 4px solid #2ecc71; /* Glowing vibrant green border */
             border-radius: 24px;
             position: relative;
             overflow: hidden;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-            backdrop-filter: blur(4px);
+            gap: 40px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
         }
 
         .intro-stage img {
-            max-height: 200px;
+            max-height: 180px;
             width: auto;
             object-fit: contain;
             z-index: 2;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
         }
 
         .hero-left {
-            transform: scaleX(-1); /* Flips left hero so they face inwards */
+            transform: scaleX(-1); /* Flips left hero towards center */
         }
 
         .sad-earth-large {
+            max-height: 210px !important;
             animation: floatEarth 3.5s ease-in-out infinite alternate;
         }
 
@@ -355,11 +356,11 @@
             max-width: 720px;
             line-height: 1.5;
             animation: fadeInText 0.8s ease-out forwards;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             padding: 12px 24px;
             border-radius: 16px;
             border: 2px solid #ffffff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
         }
 
         @keyframes fadeInText {
@@ -546,7 +547,7 @@
     <div id="screen-intro" class="screen">
         <h1 class="game-title">PLASTIC HERO</h1>
         
-        <!-- INTRO STAGE (EARTH CENTERED WITH FLANKING HEROES) -->
+        <!-- INTRO STAGE (CENTERED EARTH WITH SURROUNDING HEROES & HIGH-CONTRAST BG) -->
         <div class="intro-stage">
             <img src="player.png" alt="Player Left" class="hero-left">
             <img src="sad-earth.png" class="sad-earth-large" alt="Sad Earth Center">
