@@ -307,12 +307,12 @@
             box-shadow: 0 2px 0 #d68910;
         }
 
-        /* --- OPENING SCENE STAGING (BRIGHT & COMPACT) --- */
+        /* --- OPENING SCENE STAGING (CLOSE PROXIMITY) --- */
         .intro-stage {
-            width: 90%;
+            width: fit-content;
+            padding: 0 32px;
             max-width: 880px;
             height: 280px;
-            /* Bright green-cyan gradient background matching game aesthetics */
             background: linear-gradient(135deg, rgba(224, 247, 233, 0.88) 0%, rgba(206, 240, 253, 0.88) 100%);
             border: 4px solid #ffffff;
             outline: 3px solid #2ecc71;
@@ -322,7 +322,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px; /* Players placed much closer to Earth */
+            gap: 0; /* Gap removed for tight grouping */
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(6px);
         }
@@ -337,11 +337,11 @@
 
         .hero-left {
             transform: scaleX(-1);
-            margin-right: -10px; /* Snuggle closer to Earth */
+            margin-right: -15px; /* Overlaps directly beside Earth */
         }
 
         .hero-right {
-            margin-left: -10px; /* Snuggle closer to Earth */
+            margin-left: -15px; /* Overlaps directly beside Earth */
         }
 
         .sad-earth-large {
@@ -554,7 +554,7 @@
     <div id="screen-intro" class="screen">
         <h1 class="game-title">PLASTIC HERO</h1>
         
-        <!-- INTRO STAGE (CLOSE PLAYERS & BRIGHT STAGE CANVAS) -->
+        <!-- INTRO STAGE -->
         <div class="intro-stage">
             <img src="player.png" alt="Player Left" class="hero-left">
             <img src="sad-earth.png" class="sad-earth-large" alt="Sad Earth Center">
@@ -1161,7 +1161,6 @@ function renderGame() {
     if (isIntroVisible) {
         if (LOADED_IMAGES.introStageBg) {
             drawCoverImage(LOADED_IMAGES.introStageBg);
-            // Lightens background image slightly for better contrast
             ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         } else {
