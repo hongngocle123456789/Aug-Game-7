@@ -275,7 +275,7 @@
             text-transform: uppercase;
             margin-bottom: 4px;
             color: #27ae60;
-            text-shadow: 0 4px 0 #ffffff, 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 4px 0 #ffffff, 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
         /* --- BUTTONS --- */
@@ -307,38 +307,45 @@
             box-shadow: 0 2px 0 #d68910;
         }
 
-        /* --- OPENING SCENE STAGING WITH HIGH-CONTRAST CANVAS CARD --- */
+        /* --- OPENING SCENE STAGING (BRIGHT & COMPACT) --- */
         .intro-stage {
             width: 90%;
             max-width: 880px;
             height: 280px;
-            background: rgba(15, 32, 39, 0.75); /* Dark vibrant backdrop for contrast */
-            border: 4px solid #2ecc71; /* Glowing vibrant green border */
+            /* Bright green-cyan gradient background matching game aesthetics */
+            background: linear-gradient(135deg, rgba(224, 247, 233, 0.88) 0%, rgba(206, 240, 253, 0.88) 100%);
+            border: 4px solid #ffffff;
+            outline: 3px solid #2ecc71;
             border-radius: 24px;
             position: relative;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
+            gap: 12px; /* Players placed much closer to Earth */
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(6px);
         }
 
         .intro-stage img {
-            max-height: 180px;
+            max-height: 175px;
             width: auto;
             object-fit: contain;
             z-index: 2;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
         }
 
         .hero-left {
-            transform: scaleX(-1); /* Flips left hero towards center */
+            transform: scaleX(-1);
+            margin-right: -10px; /* Snuggle closer to Earth */
+        }
+
+        .hero-right {
+            margin-left: -10px; /* Snuggle closer to Earth */
         }
 
         .sad-earth-large {
-            max-height: 210px !important;
+            max-height: 205px !important;
             animation: floatEarth 3.5s ease-in-out infinite alternate;
         }
 
@@ -356,11 +363,11 @@
             max-width: 720px;
             line-height: 1.5;
             animation: fadeInText 0.8s ease-out forwards;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             padding: 12px 24px;
             border-radius: 16px;
             border: 2px solid #ffffff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         @keyframes fadeInText {
@@ -547,11 +554,11 @@
     <div id="screen-intro" class="screen">
         <h1 class="game-title">PLASTIC HERO</h1>
         
-        <!-- INTRO STAGE (CENTERED EARTH WITH SURROUNDING HEROES & HIGH-CONTRAST BG) -->
+        <!-- INTRO STAGE (CLOSE PLAYERS & BRIGHT STAGE CANVAS) -->
         <div class="intro-stage">
             <img src="player.png" alt="Player Left" class="hero-left">
             <img src="sad-earth.png" class="sad-earth-large" alt="Sad Earth Center">
-            <img src="player.png" alt="Player Right">
+            <img src="player.png" alt="Player Right" class="hero-right">
         </div>
 
         <!-- OPENING STORY TEXT -->
@@ -1154,6 +1161,9 @@ function renderGame() {
     if (isIntroVisible) {
         if (LOADED_IMAGES.introStageBg) {
             drawCoverImage(LOADED_IMAGES.introStageBg);
+            // Lightens background image slightly for better contrast
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
         } else {
             ctx.fillStyle = '#87ceeb';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
