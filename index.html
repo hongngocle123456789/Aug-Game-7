@@ -311,27 +311,28 @@
         .intro-stage {
             width: 90%;
             max-width: 880px;
-            height: 280px;
+            height: 200px;
             background: rgba(255, 255, 255, 0.25); 
             border: 4px solid #ffffff;
-            border-radius: 24px;
+            border-radius: 50px; /* Pillow shape */
             position: relative;
-            overflow: hidden;
+            overflow: hidden !important; /* Strict clipping */
+            isolation: isolate;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             gap: 16px;
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
             backdrop-filter: blur(4px);
-            padding: 12px;
+            padding: 16px;
         }
 
         .intro-stage img {
-            max-height: 85%;
+            max-height: 65% !important; /* Reduced to leave safe distance from pill borders */
             width: auto;
             object-fit: contain;
             z-index: 2;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
         }
 
         .sad-earth-large {
@@ -339,8 +340,8 @@
         }
 
         @keyframes floatEarth {
-            0% { transform: translateY(-8px) rotate(-1deg); }
-            100% { transform: translateY(8px) rotate(1deg); }
+            0% { transform: translateY(-6px) rotate(-1deg); }
+            100% { transform: translateY(6px) rotate(1deg); }
         }
 
         /* OPENING STORY TEXT */
@@ -544,10 +545,10 @@
         <h1 class="game-title">PLASTIC HERO</h1>
         
         <!-- INTRO STAGE -->
-        <div class="intro-stage">
-            <img src="sad-vol.png" alt="Sad Volunteer">
-            <img src="player.png" alt="Player">
-            <img src="sad-earth.png" class="sad-earth-large" alt="Sad Earth">
+        <div class="intro-stage" style="height: 280px; border-radius: 24px;">
+            <img src="sad-vol.png" alt="Sad Volunteer" style="max-height: 85% !important;">
+            <img src="player.png" alt="Player" style="max-height: 85% !important;">
+            <img src="sad-earth.png" class="sad-earth-large" alt="Sad Earth" style="max-height: 85% !important;">
         </div>
 
         <!-- OPENING STORY TEXT -->
@@ -585,9 +586,9 @@
     <div id="screen-victory" class="screen hidden" style="justify-content: flex-start; padding-top: 20px; overflow-y: auto;">
         <h1 style="color: #27ae60; font-size: 32px; text-shadow: 0 3px 0 #ffffff; margin-bottom: 8px;">🎉 CONGRATULATIONS!</h1>
         
-        <!-- INCREASED HEIGHT AND PADDING TO FIT EARTH IMAGE CLEANLY -->
-        <div class="intro-stage" style="background: linear-gradient(to bottom, #87ceeb 0%, #a8e6cf 100%); height: 180px; margin-bottom: 8px; border-color: #2ecc71;">
-            <img src="happy-earth.png" alt="Happy Earth" style="max-height: 90%; object-fit: contain;">
+        <!-- FIXED HEIGHT CONTAINER WITH SCALED IMAGE INSIDE -->
+        <div class="intro-stage" style="background: linear-gradient(to bottom, #87ceeb 0%, #a8e6cf 100%); height: 200px; margin-bottom: 8px; border-color: #2ecc71;">
+            <img src="happy-earth.png" alt="Happy Earth">
         </div>
 
         <div style="font-size: 16px; margin-bottom: 6px; font-weight: 800; color: #2c3e50;">
@@ -622,9 +623,9 @@
     <div id="screen-gameover" class="screen hidden" style="justify-content: center; overflow-y: auto;">
         <h1 style="color: #e74c3c; font-size: 32px; text-shadow: 0 3px 0 #ffffff; margin-bottom: 8px;">WE KNOW YOU TRIED YOUR BEST!</h1>
         
-        <!-- INCREASED HEIGHT AND PADDING TO FIT EARTH IMAGE CLEANLY -->
-        <div class="intro-stage" style="background: linear-gradient(to bottom, #bdc3c7 0%, #2c3e50 100%); height: 180px; margin-bottom: 8px; border-color: #e74c3c;">
-            <img src="sad-earth.png" alt="Sad Earth" style="max-height: 90%; object-fit: contain;">
+        <!-- FIXED HEIGHT CONTAINER WITH SCALED IMAGE INSIDE -->
+        <div class="intro-stage" style="background: linear-gradient(to bottom, #bdc3c7 0%, #2c3e50 100%); height: 200px; margin-bottom: 8px; border-color: #e74c3c;">
+            <img src="sad-earth.png" alt="Sad Earth">
         </div>
 
         <div style="color: #2c3e50; font-size: 16px; margin-bottom: 6px; font-weight: 800;">
