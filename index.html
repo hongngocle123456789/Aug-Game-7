@@ -74,7 +74,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 130px;
+            height: 145px;
             padding: 16px 24px;
             display: flex;
             justify-content: space-between;
@@ -85,14 +85,14 @@
 
         .hud-panel {
             background: rgba(255, 255, 255, 0.95);
-            padding: 10px 18px;
-            border-radius: 16px;
+            padding: 12px 22px;
+            border-radius: 18px;
             color: #1b4332;
             font-weight: 800;
             font-size: 16px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             border: 3px solid #2ecc71;
             backdrop-filter: blur(6px);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
@@ -111,14 +111,14 @@
         .volunteers-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .vol-icon {
-            width: 46px;
-            height: 46px;
+            width: 62px;
+            height: 62px;
             object-fit: contain;
-            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.15));
+            filter: drop-shadow(2px 3px 3px rgba(0,0,0,0.2));
             transition: transform 0.2s ease, filter 0.2s ease;
         }
 
@@ -189,8 +189,8 @@
             color: #ffffff;
             border: 3px solid #ffffff;
             border-radius: 50%;
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             font-size: 18px;
             font-weight: 900;
             cursor: pointer;
@@ -309,31 +309,43 @@
 
         /* --- OPENING SCENE STAGING --- */
         .intro-stage {
-            width: 90%;
+            width: fit-content;
+            padding: 0 32px;
             max-width: 880px;
             height: 280px;
-            background: rgba(255, 255, 255, 0.25); 
+            background: linear-gradient(135deg, rgba(224, 247, 233, 0.88) 0%, rgba(206, 240, 253, 0.88) 100%);
             border: 4px solid #ffffff;
+            outline: 3px solid #2ecc71;
             border-radius: 24px;
             position: relative;
             overflow: hidden;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-            backdrop-filter: blur(4px);
+            gap: 0;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(6px);
         }
 
         .intro-stage img {
-            max-height: 200px;
+            max-height: 175px;
             width: auto;
             object-fit: contain;
             z-index: 2;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
+        }
+
+        .hero-left {
+            transform: scaleX(-1);
+            margin-right: -15px;
+        }
+
+        .hero-right {
+            margin-left: -15px;
         }
 
         .sad-earth-large {
+            max-height: 205px !important;
             animation: floatEarth 3.5s ease-in-out infinite alternate;
         }
 
@@ -351,11 +363,11 @@
             max-width: 720px;
             line-height: 1.5;
             animation: fadeInText 0.8s ease-out forwards;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.92);
             padding: 12px 24px;
             border-radius: 16px;
             border: 2px solid #ffffff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         @keyframes fadeInText {
@@ -474,33 +486,43 @@
             font-weight: 900;
         }
 
-        /* --- ENDING SUMMARY BOX --- */
+        /* --- ENDING SUMMARY & CHECKLIST BOX --- */
         .summary-box {
             background: rgba(255, 255, 255, 0.95);
             color: #2c3e50;
-            padding: 12px 20px;
-            border-radius: 14px;
+            padding: 16px 24px;
+            border-radius: 20px;
             max-width: 880px;
-            margin: 6px 0;
-            text-align: left;
+            margin: 8px 0;
+            text-align: center;
             width: 90%;
-            border: 2px solid #2ecc71;
+            border: 3px solid #2ecc71;
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.15);
         }
 
         .summary-box h3 {
             color: #27ae60;
-            margin-bottom: 6px;
+            margin-bottom: 12px;
             text-align: center;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 900;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .summary-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 6px;
-            font-size: 13px;
+            gap: 10px;
+            font-size: 15px;
             font-weight: 800;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
     </style>
 </head>
@@ -542,11 +564,11 @@
     <div id="screen-intro" class="screen">
         <h1 class="game-title">PLASTIC HERO</h1>
         
-        <!-- INTRO STAGE (CLEAN 3-CHARACTER DISPLAY) -->
+        <!-- INTRO STAGE -->
         <div class="intro-stage">
-            <img src="sad-vol.png" alt="Sad Volunteer">
-            <img src="player.png" alt="Player">
-            <img src="sad-earth.png" class="sad-earth-large" alt="Sad Earth">
+            <img src="player.png" alt="Player Left" class="hero-left">
+            <img src="sad-earth.png" class="sad-earth-large" alt="Sad Earth Center">
+            <img src="player.png" alt="Player Right" class="hero-right">
         </div>
 
         <!-- OPENING STORY TEXT -->
@@ -584,8 +606,9 @@
     <div id="screen-victory" class="screen hidden" style="justify-content: flex-start; padding-top: 20px; overflow-y: auto;">
         <h1 style="color: #27ae60; font-size: 32px; text-shadow: 0 3px 0 #ffffff; margin-bottom: 8px;">🎉 CONGRATULATIONS!</h1>
         
-        <div class="intro-stage" style="background: linear-gradient(to bottom, #87ceeb 0%, #a8e6cf 100%); height: 140px; margin-bottom: 8px; border-color: #2ecc71;">
-            <img src="happy-earth.png" alt="Happy Earth" style="max-height: 120px; object-fit: contain;">
+        <!-- EXPANDED EARTH CONTAINER (height: 190px, max-height: 160px for image) -->
+        <div class="intro-stage" style="background: linear-gradient(to bottom, #87ceeb 0%, #a8e6cf 100%); height: 190px; margin-bottom: 8px; border-color: #2ecc71;">
+            <img src="happy-earth.png" alt="Happy Earth" style="max-height: 160px; object-fit: contain;">
         </div>
 
         <div style="font-size: 16px; margin-bottom: 6px; font-weight: 800; color: #2c3e50;">
@@ -595,7 +618,7 @@
         
         <div class="summary-box">
             <h3>COMPLETED COLLECTION CHECKLIST</h3>
-            <div class="summary-list">
+            <div class="summary-list" id="victory-checklist">
                 <div>✅ Plastic Bag</div>
                 <div>✅ Plastic Wrapper</div>
                 <div>✅ Plastic Container</div>
@@ -617,16 +640,22 @@
     </div>
 
     <!-- 5. GAME OVER SCENE -->
-    <div id="screen-gameover" class="screen hidden" style="justify-content: center; overflow-y: auto;">
+    <div id="screen-gameover" class="screen hidden" style="justify-content: flex-start; padding-top: 20px; overflow-y: auto;">
         <h1 style="color: #e74c3c; font-size: 32px; text-shadow: 0 3px 0 #ffffff; margin-bottom: 8px;">WE KNOW YOU TRIED YOUR BEST!</h1>
         
-        <div class="intro-stage" style="background: linear-gradient(to bottom, #bdc3c7 0%, #2c3e50 100%); height: 140px; margin-bottom: 8px; border-color: #e74c3c;">
-            <img src="sad-earth.png" alt="Sad Earth" style="max-height: 120px; object-fit: contain;">
+        <!-- EXPANDED EARTH CONTAINER (height: 190px, max-height: 160px for image) -->
+        <div class="intro-stage" style="background: linear-gradient(to bottom, #bdc3c7 0%, #2c3e50 100%); height: 190px; margin-bottom: 8px; border-color: #e74c3c;">
+            <img src="sad-earth.png" alt="Sad Earth" style="max-height: 160px; object-fit: contain;">
         </div>
 
         <div style="color: #2c3e50; font-size: 16px; margin-bottom: 6px; font-weight: 800;">
             You found <span id="collected-count">0</span> out of 6 accepted plastic types.<br>
-            The Earth needs more Plastic Heroes like you!
+            The Earth still needs more Plastic Heroes like you!
+        </div>
+
+        <div class="summary-box">
+            <h3>COMPLETED COLLECTION CHECKLIST</h3>
+            <div class="summary-list" id="gameover-checklist"></div>
         </div>
 
         <div class="cta-box">
@@ -829,7 +858,7 @@ function updatePlayerDimensions() {
         aspect = player.width / player.height;
     }
     
-    player.height = canvas.height * 0.28;
+    player.height = canvas.height * 0.36;
     player.width = player.height * aspect;
     player.y = canvas.height - player.height - 15;
     
@@ -912,6 +941,21 @@ function updateHUDTracker() {
         return `
             <div class="tracker-item ${isCollected ? 'collected' : ''}">
                 <img src="${ASSETS[key]}" alt="${ITEM_TYPES[key].name}">
+                <span>${ITEM_TYPES[key].name}</span>
+            </div>
+        `;
+    }).join('');
+}
+
+function renderGameOverChecklist() {
+    const listContainer = document.getElementById('gameover-checklist');
+    listContainer.innerHTML = ACCEPTED_KEYS.map(key => {
+        const isCollected = collectedItems.has(key);
+        const icon = isCollected ? '✅' : '❌';
+        const style = isCollected ? 'color: #27ae60;' : 'color: #7f8c8d; opacity: 0.7;';
+        return `
+            <div class="summary-item" style="${style}">
+                <span>${icon}</span>
                 <span>${ITEM_TYPES[key].name}</span>
             </div>
         `;
@@ -1149,6 +1193,8 @@ function renderGame() {
     if (isIntroVisible) {
         if (LOADED_IMAGES.introStageBg) {
             drawCoverImage(LOADED_IMAGES.introStageBg);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
         } else {
             ctx.fillStyle = '#87ceeb';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -1203,6 +1249,7 @@ function endGame(isVictory) {
     } else {
         playSound('gameover');
         document.getElementById('collected-count').textContent = collectedItems.size;
+        renderGameOverChecklist();
         document.getElementById('screen-gameover').classList.remove('hidden');
     }
 }
